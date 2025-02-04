@@ -6,15 +6,27 @@ import Facts.Anomalie;
 
 public class AgentInfiltre extends AgentsTemporels implements ExpertEnDiscretion
 {
-    public AgentInfiltre(String nom, Integer niveauExp, Integer anneeRecrutement)
+    public AgentInfiltre(String nom, Integer niveauExp, Integer anneeRecrutement, Integer id)
     {
-        super(nom, niveauExp, anneeRecrutement);
+        super(nom, niveauExp, anneeRecrutement, id);
+        super.cooldown = ExpertEnDiscretion.cooldown;
+        super.currentCooldown = super.cooldown;
+        super.damage = ExpertEnDiscretion.damage;
     }
 
     @Override
-    public void executerMission(Anomalie anomalie)
+    public Integer executerMission(Anomalie anomalie)
     {
-        seFondreDansLeDecor();
-        anomalie.setStatut(Statut.resolue);
+        if (capacityIsUsable())
+        {
+            seFondreDansLeDecor();
+            super.currentCooldown = 0;
+            return super.damage;
+        }
+        else
+        {
+            super.currentCooldown += 1;
+            return 0;
+        }
     }
 }

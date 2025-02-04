@@ -6,15 +6,27 @@ import Enum.Statut;
 
 public class AgentScientifique extends AgentsTemporels implements VoyageurTemporel
 {
-    public AgentScientifique(String nom, Integer niveauExp, Integer anneeRecrutement)
+    public AgentScientifique(String nom, Integer niveauExp, Integer anneeRecrutement, Integer id)
     {
-        super(nom, niveauExp, anneeRecrutement);
+        super(nom, niveauExp, anneeRecrutement, id);
+        super.cooldown = VoyageurTemporel.cooldown;
+        super.currentCooldown = super.cooldown;
+        super.damage = VoyageurTemporel.damage;
     }
 
     @Override
-    public void executerMission(Anomalie anomalie)
+    public Integer executerMission(Anomalie anomalie)
     {
-        voyagerDansLeTemps(anomalie.getAnneeApparition()-2);
-        anomalie.setStatut(Statut.resolue);
+        if (capacityIsUsable())
+        {
+            voyagerDansLeTemps(anomalie.getAnneeApparition()-2);
+            super.currentCooldown = 0;
+            return super.damage;
+        }
+        else
+        {
+            super.currentCooldown += 1;
+            return 0;
+        }
     }
 }
