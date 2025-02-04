@@ -1,3 +1,8 @@
+package Facts;
+
+import Agents.*;
+import Enum.Statut;
+
 public class Mission
 {
     private String titre;
@@ -13,7 +18,7 @@ public class Mission
 
     public void executerMission()
     {
-        anomalie.setStatut(Status.en_cours_de_resolution);
+        anomalie.setStatut(Statut.en_cours_de_resolution);
         agent.executerMission(anomalie);
     }
 

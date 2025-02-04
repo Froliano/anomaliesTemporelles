@@ -1,10 +1,14 @@
+package Agents;
+
+import Facts.Anomalie;
+
 public abstract class AgentsTemporels
 {
     protected String nom;
     protected Integer niveauExp;
     protected Integer anneeRecrutement;
 
-    protected abstract void executerMission(Anomalie anomalie);
+    public abstract void executerMission(Anomalie anomalie);
 
     protected AgentsTemporels(String nom, Integer niveauExp, Integer anneeRecrutement)
     {

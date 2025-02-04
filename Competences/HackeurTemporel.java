@@ -1,3 +1,5 @@
+package Competences;
+
 public interface HackeurTemporel
 {
     public default void piraterSysteme(String cible)

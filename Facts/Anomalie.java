@@ -1,19 +1,23 @@
+package Facts;
+
+import Enum.*;
+
 public class Anomalie
 {
     private String description;
     private Integer anneeApparition;
     private Dangerosite dangerosite;
-    private Status statut;
+    private Statut statut;
 
     public Anomalie(String description, Integer anneeApparition, Dangerosite dangerosite)
     {
         this.description = description;
         this.anneeApparition = anneeApparition;
         this.dangerosite = dangerosite;
-        this.statut = Status.non_resolue;
+        this.statut = Statut.non_resolue;
     }
 
-    public void setStatut(Status statut)
+    public void setStatut(Statut statut)
     {
         this.statut = statut;
         System.out.println("Statut de l'anomalie " + description + " : " + statut);
@@ -31,7 +35,7 @@ public class Anomalie
         return dangerosite;
     }
 
-    public Status getStatut() {
+    public Statut getStatut() {
         return statut;
     }
 }

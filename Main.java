@@ -1,3 +1,9 @@
+import Agents.AgentInfiltre;
+import Agents.AgentScientifique;
+import Agents.AgentTechnologique;
+import Facts.*;
+import Enum.*;
+
 public class Main
 {
     public static void main(String[] args)

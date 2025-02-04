@@ -1,3 +1,5 @@
+package Competences;
+
 public interface VoyageurTemporel
 {
     public default void voyagerDansLeTemps(Integer anneeDestination)
